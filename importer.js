@@ -1,18 +1,27 @@
+(function(){
+  var newscript = document.createElement('script');
+     newscript.type = 'text/javascript';
+     newscript.async = true;
+     newscript.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js';
+  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(newscript);
+})();
+var tabla=$("body > table:nth-child(8) > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(2) > td > table > tbody > tr  a")
+
 var arrayIds=[];
 var contador=0;
-var arrayContent=[];
+var arrayContent={};
 
 tabla.each(function (e,i){
 	var link=$(i).attr("href");
 	var idficha=link.split("Id=")[1]
 	if(!existe(idficha)){
 
-	arrayIds.push(idficha);
+	arrayIds.push(idficha); 
 
-	arrayContent[contador]=[];
+	arrayContent[contador]={};
 	extractData(idficha,contador);
 	contador++;
- 	}
+  	}
 })
 //console.log(arrayIds);
 
@@ -50,7 +59,7 @@ function extractData(id,contador){
         	arrayContent[contador]["direccionAlquiler"]=direccionAlquiler.text();
 
         	arrayContent[contador]["imagenes"]=[];
- 			var imagenesSeccion=[];
+
 
  			$("<img src='"+"http://www.soloduenos.com/CargaImgNuevoSistema.asp?Id=143409&Campo=Foto"+1+"'>").load(function(){ 
  					arrayContent[contador]["imagenes"].push("http://www.soloduenos.com/CargaImgNuevoSistema.asp?Id=143409&Campo=Foto"+1);
@@ -89,7 +98,7 @@ function extractData(id,contador){
  			var valoresDesc=[];
 
  			ints.each(function(es,tr){
-   				 var arrayInterno=[];
+   				 var arrayInterno={};
 
  				$(tr).find("td").each(function(o,td){
  						arrayInterno[contadors]=$(td);
@@ -107,7 +116,7 @@ function extractData(id,contador){
 
 	 							valoresDesc.push(arrayInterno);
 	 						}
-	 						arrayInterno=[];
+	 						arrayInterno={};
 	 						contadors=0;
  							
  					}
