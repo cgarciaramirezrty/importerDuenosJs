@@ -42,7 +42,7 @@ function extractData(id,contador){
 	  $.ajax({
 	  	url: "http://www.soloduenos.com/Ficha.asp?Tipo=2&Id=143409",//+id, 
 	  	success: function(result){
-	  		var result=result.replace(/\t/g, '').split("\u21b5").join('');
+	  		var result=result;
 	  	var jsonhtml=$(result)
 
 
@@ -110,7 +110,7 @@ function extractData(id,contador){
 	 						}else{
 	 							arrayInterno[2]=$(arrayInterno[2]).text().replace('↵','');
 	 						}
-	 						arrayInterno[1]=$(arrayInterno[1]).text();
+	 						arrayInterno[1]=$(arrayInterno[1]).text().replace(/\t/g, '');
 	 						console.log(arrayInterno);
  	 						if(arrayInterno.length!=0){
 
